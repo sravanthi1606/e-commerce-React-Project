@@ -55,4 +55,5 @@ const AdminSingleProduct = () => {
         </div>
     )
 }
+                        
 export default AdminSingleProduct;
