@@ -39,13 +39,16 @@ const AdminHome = () => {
 
 
     const handleDelete = async (productId) => {
-        try {
-            await dispatch(DeleteProducts(productId)); // Wait for deletion to complete
-            dispatch(fetchProducts()); // Fetch updated product list
-            toast.success("Deleted an Item !!");
-        } catch (error) {
-            console.error("Error deleting product:", error);
-            toast.error("Failed to delete product.");
+        const confirmDelete = window.confirm("Are you sure you want to delete this item?");
+        if(confirmDelete){
+            try {
+                await dispatch(DeleteProducts(productId)); // Wait for deletion to complete
+                dispatch(fetchProducts()); // Fetch updated product list
+                toast.success("Deleted an Item !!");
+            } catch (error) {
+                console.error("Error deleting product:", error);
+                toast.error("Failed to delete product.");
+            }
         }
     }
 

@@ -6,6 +6,8 @@ import { FaStar } from "react-icons/fa6";
 import Footer from "../Components/Footer"
 import { toast } from "react-toastify";
 import { fetchProduct } from "../Redux/Action/Action";
+import { NavLink } from "react-router-dom";
+import { FaArrowAltCircleLeft } from "react-icons/fa"
 import { Link } from "react-router-dom";
 import { FaCartArrowDown } from "react-icons/fa";
 
@@ -19,14 +21,13 @@ const SingleProduct = () => {
 
     const cart = useSelector((state) => state.CartPage?.cart || []);
 
-
     useEffect(() => {
         dispatch(fetchProduct(id));
     }, [dispatch, id]);
 
 
     const isInCart = cart.some(item => item.id === productList.id);
-    const [addToCartBtn, setAddToCartBtn] = useState(true);
+    const [addToCartBtn, setAddToCartBtn] = useState(false);
 
 
     const addProduct = () => {
@@ -36,6 +37,7 @@ const SingleProduct = () => {
             toast.success('Product is added to cart')
         }
     }
+
 
 
     const ShowProduct = () => {
@@ -87,15 +89,14 @@ const SingleProduct = () => {
                 <div className="container">
                     <div className="row">
                         <div className="col-lg-12">
-                            <div className="cart_nav">
-                                <button><Link to="/product" className='user_nav_item'>All Products</Link></button>
-                                <Link to="/cart" className='nav_item_cart'>Cart <FaCartArrowDown /> ({cart.length})</Link>
-                            </div>
+                            <Link to="/cart" className='nav_item_cart'>Cart <FaCartArrowDown /> ({cart.length})</Link>
                         </div>
                     </div>
                 </div>
             </div>
 
+
+            <NavLink to="/home" className="btn  go_back"><FaArrowAltCircleLeft size={30} /></NavLink>
 
             <div className="container py-5">
                 <div className="row py-4">

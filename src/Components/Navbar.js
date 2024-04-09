@@ -71,7 +71,7 @@ const Navbar = () => {
             </div>
 
             <Modal show={show} onHide={handleClose}>
-                <Modal.Header closeButton>
+                <Modal.Header>
                     <Modal.Title>Confirmation</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>Are you sure you want to log out?</Modal.Body>

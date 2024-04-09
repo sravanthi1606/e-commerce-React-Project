@@ -5,6 +5,7 @@ import { Link, NavLink } from "react-router-dom";
 import { FaCartArrowDown } from "react-icons/fa";
 import Footer from "./Footer";
 import { toast } from "react-toastify";
+import { FaArrowAltCircleLeft } from "react-icons/fa"
 
 
 const Cart = () => {
@@ -37,7 +38,7 @@ const Cart = () => {
             dispatch(incrementQuantity(productId));
         }
 
-        else {            
+        else {
             dispatch(setErrorMessage(toast.warn("Hurry up limited stock available !!")))
         }
     }
@@ -59,16 +60,18 @@ const Cart = () => {
             <div className="user_navbars">
                 <div className="container">
                     <div className="row">
-                        <div className="col-lg-12">
-                            <div className="cart_navs">
-                                <button><Link to="/product" className='user_nav_items'>All Products</Link></button>
-                                <Link to="/cart" className='nav_item_carts'>Cart <FaCartArrowDown /> ({cart.length})</Link>
-                                <button className='nav_item_carts' onClick={handleClearCart}>Clear Cart</button>
-                            </div>
+                        <div className="col-lg-12 ">
+                            <Link to="/cart" className='nav_item_cart'>Cart <FaCartArrowDown /> ({cart.length})</Link>
                         </div>
                     </div>
                 </div>
             </div>
+
+            <div>
+                <NavLink to="/home" className="btn  go_back"><FaArrowAltCircleLeft size={30} /></NavLink>
+                <button className='nav_item_carts clear-cart' onClick={handleClearCart}>Clear Cart</button>
+            </div>
+
 
             <h4 className="cart_head">Shopping Cart items</h4>
             {cart && cart.length > 0 ? (cart.map((products) => (
@@ -83,7 +86,7 @@ const Cart = () => {
                             <h1 className="single_product_title">{products.title}</h1>
                             <h6 className="single_product_category">Category - {products.category}</h6>
                             <span className="fw-bold">Quantity :</span>
-                            <button className="incdec_btn" onClick={() => handleDecrementQuantity(products.id)} disabled={products.qty===1}>-</button>
+                            <button className="incdec_btn" onClick={() => handleDecrementQuantity(products.id)} disabled={products.qty === 1}>-</button>
                             <span>{products.qty}</span>
                             <button className="incdec_btn" onClick={() => handleIncrementQuantity(products.id)} disabled={products.qty === products.Originalqty}>+</button>
                             <p className="fw-bold">
@@ -111,7 +114,7 @@ const Cart = () => {
                         </div>
 
                         <div className="totalPrice">
-                            <h2>Total Price -</h2>
+                            <h2>Total Price </h2>
                             <h2 className="text-2xl font-bold">${totalAmount}</h2>
                         </div>
                     </>

@@ -1,6 +1,6 @@
 const initialState = {
     products: [],
-    error: ""
+    error: "",
   };
   
  export const SingleProductReducer = (state = initialState, action) => {

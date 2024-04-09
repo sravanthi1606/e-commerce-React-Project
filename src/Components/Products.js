@@ -51,7 +51,7 @@ const Product = () => {
                             <div className="cart_nav">
                                 <button><Link to="/product" className='user_nav_item'>All Products</Link></button>
                                 <input type="text" placeholder="  search for product by name" value={search} onChange={(event) => setSearch(event.target.value)}></input>
-                                <Link to="/wishlist" className='nav_item_cart'><FaHeart style={{color:"red"}}/></Link>
+                                <Link to="/wishlist" className='nav_item_cart1'><FaHeart style={{color:"red"}}/></Link>
                                 <Link to="/cart" className='nav_item_cart'>Cart <FaCartArrowDown /> ({cart.length})</Link>
                             </div>
                         </div>

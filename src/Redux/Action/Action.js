@@ -34,6 +34,7 @@ export const fetchProduct = (id) => {
 
 
 
+
 export const addToWishlist = (productId) => ({
     type: "ADD_TO_WISHLIST",
     payload: productId,
@@ -179,85 +180,3 @@ export const EditProducts = (data,id) => {
     };
 };
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// export const AddingProducts = (data) => {
-//     return  function (dispatch) {
-//        axios.post(`https://products-9fsh.onrender.com/products`, data)
-//             .then(() => {
-//                 dispatch({
-//                     type: "ADD_PRODUCT",
-//                     payload: data
-//                 })
-//             })
-//             // .then((response) => {
-//             //     if (response.status === 200) {
-//             //         // dispatch(fetchProductSuccess(response.data))
-//             //         dispatch({
-//             //                     type: "ADD_PRODUCT",
-//             //                     payload: data
-//             //                 })
-//             //     }
-                
-//             // })
-//             .catch((error) => {
-//                 console.error("Error Adding product:", error);
-//             })
-//     }
-// }
-
-
-// export const EditProducts = (data, id) => {
-//     return function (dispatch) {
-//         axios.put(`https://products-9fsh.onrender.com/products/${id}`, data)
-//             .then(() => {
-//                 dispatch({
-//                     type: "EDIT_UPDATE_PRODUCT",
-//                     payload: data
-//                 })
-//             })
-//             .catch((error) => {
-//                 console.error("Error Adding product:", error);
-//             })
-//     }
-// }
-
-
-
-
-// export const DeleteProducts = (productId) => {
-//     return function (dispatch) {
-//         axios.delete(`https://products-9fsh.onrender.com/products/${productId}`)
-//             .then(() => {
-//                 dispatch({
-//                     type: "DELETE_PRODUCT",
-//                     payload: productId
-//                 })
-//             })
-//             .catch((error) => {
-//                 console.error("Error deleting product:", error);
-//             })
-//     }
-// }
-
-
- // Dispatch an action to indicate that product has been added
-                // dispatch({
-                //     type: "PRODUCT_ADDED_SUCCESSFULLY",
-                //     payload: data
-                // });

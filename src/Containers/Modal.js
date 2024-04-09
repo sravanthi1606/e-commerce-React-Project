@@ -67,19 +67,19 @@ return(
             <form onSubmit={handleSubmit}>
                 <div>
                     <label htmlFor="title">Title</label>
-                    <input type="text" name="title" id="title" className="form-control" value={title} onChange={(event)=>setTitle(event.target.value)}></input>
+                    <input type="text" name="title" id="title" className="form-control" value={title} onChange={(event)=>setTitle(event.target.value)} required></input>
                 </div>
                 <div>
                     <label htmlFor="price">Price</label>
-                    <input type="number" name="price" id="price" className="form-control" value={price} onChange={(event)=>setprice(event.target.value)}></input>
+                    <input type="number" name="price" id="price" className="form-control" value={price} onChange={(event)=>setprice(event.target.value)} required></input>
                 </div>
                 <div>
                     <label htmlFor="description">Description</label>
-                    <input type="text" name="description" id="description" className="form-control" value={description} onChange={(event)=>setdescription(event.target.value)}></input>
+                    <input type="text" name="description" id="description" className="form-control" value={description} onChange={(event)=>setdescription(event.target.value)} required></input>
                 </div>
                 <div>
                     <label htmlFor="category">Category</label>
-                    <select className="form-control" value={category} onChange={(event)=>setcategory(event.target.value)}>
+                    <select className="form-control" value={category} onChange={(event)=>setcategory(event.target.value)} required>
                         <option value="men's clothing">Men</option>
                         <option value="women's clothing">Women</option>
                         <option value="jewelery">Jwellery</option>
@@ -88,12 +88,12 @@ return(
                 </div>
                 <div>
                     <label htmlFor="image">Image</label>
-                    <input type="file" name="image" id="image" className="form-control" onChange={handleImage}></input>
+                    <input type="file" name="image" id="image" className="form-control" onChange={handleImage} required></input>
                 </div>
                 
                 <div>
                     <label htmlFor="quantity">Quantity</label>
-                    <input type="number" name="quantity" id="quantity" className="form-control" value={qty} onChange={(event)=>setquantity(event.target.value)}></input>
+                    <input type="number" name="quantity" id="quantity" className="form-control" value={qty} onChange={(event)=>setquantity(event.target.value)} required></input>
                 </div>
                 
                 <button className="btn add_btn" type="submit">Add</button>

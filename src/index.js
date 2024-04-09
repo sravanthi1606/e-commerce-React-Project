@@ -11,6 +11,7 @@ import { persistStore } from 'redux-persist';
 import { Bounce, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
+
 const persistor = persistStore(store);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
