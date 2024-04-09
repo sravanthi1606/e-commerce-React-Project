@@ -18,6 +18,7 @@ import { useNavigate } from 'react-router-dom';
 
 
 const UserHome = () => {
+    const [activeButton, setActiveButton] = useState(null);
     const { setIsAuth } = useContext(NavUserContext);
     const navigate = useNavigate();
 
@@ -43,7 +44,7 @@ const UserHome = () => {
     const [filter, setFilter] = useState(productList);
 
     const filterProduct = (cat) => {
-        
+        setActiveButton(cat);
         const updatedList = productList.filter((x) => x.category === cat);
         setFilter(updatedList);
     }
@@ -116,14 +117,41 @@ const UserHome = () => {
 
 
             <div className="product_btn_links">
-                <div className="buttons product_btn ">
-                    <div className="btn btn-outline-info me-2 product_button" onClick={() => setFilter(productList)}>All</div>
-                    <div className="btn btn-outline-info me-2 product_button" onClick={() => filterProduct("men's clothing")}>Men's Clothing</div>
-                    <div className="btn btn-outline-info me-2 product_button" onClick={() => filterProduct("women's clothing")}>Women's Clothing</div>
-                    <div className="btn btn-outline-info me-2 product_button" onClick={() => filterProduct("jewelery")}>Jewellery</div>
-                    <div className="btn btn-outline-info me-2 product_button" onClick={() => filterProduct("electronics")}>Electronics</div>
+                <div className="buttons product_btn">
+                    <div
+                        className={`me-2 ${activeButton === 'All' ? 'clicked' : 'unclicked'}`}
+                        onClick={() => setFilter(productList)}
+                    >
+                        All
+                    </div>
+                    <div
+                        className={`me-2 ${activeButton === "men's clothing" ? 'clicked' : 'unclicked'}`}
+                        onClick={() => filterProduct("men's clothing")}
+                    >
+                        Men's Clothing
+                    </div>
+                    <div
+                        className={`me-2 ${activeButton === "women's clothing" ? 'clicked' : 'unclicked'}`}
+                        onClick={() => filterProduct("women's clothing")}
+                    >
+                        Women's Clothing
+                    </div>
+                    <div
+                        className={`me-2 ${activeButton === 'jewelery' ? 'clicked' : 'unclicked'}`}
+                        onClick={() => filterProduct('jewelery')}
+                    >
+                        Jewellery
+                    </div>
+                    <div
+                        className={`me-2 ${activeButton === 'electronics' ? 'clicked' : 'unclicked'}`}
+                        onClick={() => filterProduct('electronics')}
+                    >
+                        Electronics
+                    </div>
                 </div>
             </div>
+
+
 
             <div className="container">
                 <div className="row">
