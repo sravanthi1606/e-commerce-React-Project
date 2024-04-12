@@ -1,4 +1,4 @@
-import React, { useContext ,useState} from 'react';
+import React, { useContext, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { NavUserContext } from './RouterComponents';
 import { AiOutlineLogout } from "react-icons/ai";
@@ -21,7 +21,7 @@ const Navbar = () => {
         setShow(false);
     };
     const handleShow = () => setShow(true);
-    
+
 
     const handleLogout = () => {
         handleShow();
@@ -48,27 +48,31 @@ const Navbar = () => {
 
     return (
         <div className='navsection'>
-            <div className='navbar'>
-                <div className='image_home'>
-                    <div>
-                    <img src={logo_img} className='logo_img'></img>
+            {!show &&
+                (
+                    <div className='navbar'>
+                        <div className='image_home'>
+                            <div>
+                                <img src={logo_img} className='logo_img'></img>
+                            </div>
+                            <div>
+                                {
+                                    isAuth && (
+                                        <Link to="/home" className='nav_items'>Home</Link>
+                                    )
+
+                                }
+                            </div>
+
+                        </div>
+                        <div>
+                            <Link to="*" className='nav_items1' onClick={handleLogout}>
+                                {isAuth ? <button>Sign Out <AiOutlineLogout /></button> : ""}
+                            </Link>
+                        </div>
                     </div>
-                   <div>
-                   {
-                        isAuth && (
-                            <Link to="/home" className='nav_items'>Home</Link>
-                        )
-
-                    }
-                   </div>
-
-                </div>
-                <div>
-                    <Link to="*" className='nav_items1' onClick={handleLogout}>
-                        {isAuth ? <button>Sign Out <AiOutlineLogout /></button> : ""}
-                    </Link>
-                </div>
-            </div>
+                )
+            }
 
             <Modal show={show} onHide={handleClose} >
                 <Modal.Header>
