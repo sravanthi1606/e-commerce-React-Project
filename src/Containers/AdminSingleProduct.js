@@ -1,4 +1,4 @@
-import React, {useEffect } from "react";
+import React, {useEffect,useState } from "react";
 import { NavLink } from "react-router-dom";
 import { FaStar } from "react-icons/fa6";
 import Footer from "../Components/Footer"
@@ -15,8 +15,18 @@ const AdminSingleProduct = () => {
 
     const productList = useSelector((state) => state.SingleProduct.products);
 
+    const [loading, setLoading] = useState(false);
+
+
     useEffect(() => {
-        dispatch(fetchProduct(id));
+
+        setLoading(true);
+        dispatch(fetchProduct(id))
+          .then(() => setLoading(false)) 
+          .catch((error) => {
+            setLoading(false); 
+            console.error("Error fetching product:", error);
+          });
     }, [dispatch, id]);
 
     const ShowProduct = () => {
@@ -48,7 +58,7 @@ const AdminSingleProduct = () => {
             <NavLink to="/home" className="btn  go_back"><FaArrowAltCircleLeft size={30}/></NavLink>
             <div className="container py-5">
                 <div className="row py-4">
-                    {<ShowProduct/>}
+                {loading ? <p>Loading...</p> : <ShowProduct />}
                 </div>
             </div>
             <Footer />

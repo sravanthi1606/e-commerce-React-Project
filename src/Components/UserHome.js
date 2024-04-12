@@ -45,8 +45,12 @@ const UserHome = () => {
 
     const filterProduct = (cat) => {
         setActiveButton(cat);
-        const updatedList = productList.filter((x) => x.category === cat);
-        setFilter(updatedList);
+        if (cat === 'All') {
+            setFilter(productList);
+        } else {
+            const updatedList = productList.filter((x) => x.category === cat);
+            setFilter(updatedList);
+        }
     }
 
 
@@ -120,7 +124,8 @@ const UserHome = () => {
                 <div className="buttons product_btn">
                     <div
                         className={`me-2 ${activeButton === 'All' ? 'clicked' : 'unclicked'}`}
-                        onClick={() => setFilter(productList)}
+                        onClick={() =>  filterProduct('All')}
+                        // onClick={() => filterProduct("men's clothing" || "women's clothing" || "jewelery" || "electronics")}
                     >
                         All
                     </div>

@@ -70,7 +70,7 @@ const Navbar = () => {
                 </div>
             </div>
 
-            <Modal show={show} onHide={handleClose}>
+            <Modal show={show} onHide={handleClose} >
                 <Modal.Header>
                     <Modal.Title>Confirmation</Modal.Title>
                 </Modal.Header>

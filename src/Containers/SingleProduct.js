@@ -20,9 +20,17 @@ const SingleProduct = () => {
     const productList = useSelector((state) => state.SingleProduct.products);
 
     const cart = useSelector((state) => state.CartPage?.cart || []);
+    const [loading, setLoading] = useState(false);
 
     useEffect(() => {
-        dispatch(fetchProduct(id));
+
+        setLoading(true);
+        dispatch(fetchProduct(id))
+          .then(() => setLoading(false)) 
+          .catch((error) => {
+            setLoading(false); 
+            console.error("Error fetching product:", error);
+          });
     }, [dispatch, id]);
 
 
@@ -41,6 +49,7 @@ const SingleProduct = () => {
 
 
     const ShowProduct = () => {
+
         return (
             <div>
                 <div className="container single_product" key={productList.id}>
@@ -100,7 +109,8 @@ const SingleProduct = () => {
 
             <div className="container py-5">
                 <div className="row py-4">
-                    {<ShowProduct />}
+                {loading ? <p>Loading...</p> : <ShowProduct />}
+
                 </div>
             </div>
             <Footer />

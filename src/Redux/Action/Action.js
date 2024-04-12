@@ -17,20 +17,24 @@ export const fetchProductsFailure = (error) => {
 
 export const fetchProduct = (id) => {
     return function (dispatch) {
-        axios.get(`https://products-9fsh.onrender.com/products/${id}`)
-            .then((response) => {
-                if (response.status === 200) {
-                    dispatch(fetchProductsSuccess(response.data))
-                }
-                else {
-                    dispatch(fetchProductsSuccess(response.statusMessage))
-                }
-            })
-            .catch((error) => {
-                dispatch(fetchProductsFailure(error.message));
-            })
-    }
-}
+        return new Promise((resolve, reject) => {
+            axios.get(`https://products-9fsh.onrender.com/products/${id}`)
+                .then((response) => {
+                    if (response.status === 200) {
+                        dispatch(fetchProductsSuccess(response.data));
+                        resolve(); 
+                    } else {
+                        dispatch(fetchProductsFailure(response.statusMessage));
+                        reject(response.statusMessage); 
+                    }
+                })
+                .catch((error) => {
+                    dispatch(fetchProductsFailure(error.message));
+                    reject(error.message); 
+                });
+        });
+    };
+};
 
 
 
