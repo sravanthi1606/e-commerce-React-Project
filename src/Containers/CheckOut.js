@@ -5,6 +5,9 @@ import Footer from "../Components/Footer"
 import { toast } from "react-toastify";
 import { FaArrowAltCircleLeft } from "react-icons/fa"
 import { NavLink } from "react-router-dom";
+import { Link} from "react-router-dom";
+import { FaCartArrowDown } from "react-icons/fa";
+
 
 
 const CheckOut = () => {
@@ -34,8 +37,17 @@ const CheckOut = () => {
 
     return (
         <div>
+            <div className="user_navbars">
+                <div className="container">
+                    <div className="row">
+                        <div className="col-lg-12 ">
+                            <Link to="/cart" className='nav_item_cart'>Cart <FaCartArrowDown /> ({cart.length})</Link>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <NavLink to="/cart" className="btn  go_back"><FaArrowAltCircleLeft size={30} /></NavLink>
-            
+
             {cart && cart.length > 0 && (cart.map((products) => (
 
                 <div>
